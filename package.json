@@ -1,0 +1,23 @@
+{
+  "name": "posix-syslog",
+  "version": "0.0.1",
+  "description": "Interface to syslog via local syscalls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cgiffard/posix-syslog.git"
+  },
+  "keywords": [
+    "syslog",
+    "logger",
+    "log"
+  ],
+  "author": "Christopher Giffard <christopher.giffard@cgiffard.com>",
+  "license": "BSD",
+  "dependencies": {
+    "posix": "0.0.12"
+  }
+}
