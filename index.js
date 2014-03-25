@@ -67,6 +67,42 @@ for (var maskID in masks) {
 // Set our initial connection state
 syslog.status = 0;
 
+syslog.upto = function(level) {
+    // reset all to false...
+    masks = {
+        'emerg': false,
+        'alert': false,
+        'crit': false,
+        'err': false,
+        'warning': false,
+        'notice': false,
+        'info': false,
+        'debug': false
+    };
+
+    // fall-through is on-purpose, we want to enable from point and all that follow    
+    switch(level) {
+        case 'debug':
+            masks.debug = true;
+        case 'info':
+            masks.info = true;
+        case 'notice':
+            masks.notice = true;
+        case 'warning':
+            masks.warning = true;
+        case 'err':
+            masks.err = true;
+        case 'crit':
+            masks.crit = true;
+        case 'alert':
+            masks.alert = true;
+        case 'emerg':
+            masks.emerg = true;
+    };
+    
+	posix.setlogmask(masks);
+};
+
 syslog.format = function() {
 	return util.format.apply(util,arguments);
 };
@@ -83,7 +119,7 @@ syslog.open = function(identity,options,facility) {
 		options		|| defaultOptions,
 		facility	|| "local0"
 	);
-	
+    
 	posix.setlogmask(masks);
 	
 	return !!(syslog.status = 1);
