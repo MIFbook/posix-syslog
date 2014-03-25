@@ -1,6 +1,6 @@
 {
   "name": "posix-syslog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interface to syslog via local syscalls",
   "main": "index.js",
   "scripts": {
